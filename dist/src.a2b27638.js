@@ -195,6 +195,28 @@ module.hot.accept(reloadCSS);
 require("./styles.css");
 
 console.log("hello");
+var count = 1;
+
+function plus() {
+  fetch('https://swapi.co/api/people/' + ++count).then(function (response) {
+    return response.json();
+  }).then(function (myJson) {
+    console.log(myJson);
+    document.getElementById("output").innerHTML = myJson.name;
+  });
+}
+
+function minus() {
+  fetch('https://swapi.co/api/people/' + --count).then(function (response) {
+    return response.json();
+  }).then(function (myJson) {
+    console.log(myJson);
+    document.getElementById("output").innerHTML = myJson.name;
+  });
+}
+
+document.getElementById("plus").addEventListener("click", plus, false);
+document.getElementById("minus").addEventListener("click", minus, false);
 },{"./styles.css":"src/styles.css"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -223,7 +245,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65323" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51311" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
